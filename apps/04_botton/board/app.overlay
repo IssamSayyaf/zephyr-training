@@ -1,0 +1,27 @@
+/* boards/nrf5340dk_nrf5340_cpuapp.overlay */
+
+//  / {
+//      /* Make it easy to grab this channel in code */
+//      zephyr,user {
+//          io-channels = <&adc 0>;   /* SAADC channel 0 = P0.04 (AIN0) */
+//      };
+//  };
+
+
+
+/ {
+    buttons {
+        compatible = "gpio-keys";
+        p006_in: p006_in {
+            gpios = <&gpio0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "P0.06_BTN";
+        };
+    };
+};
+/ {
+	aliases {
+		button6 = &p006_in;
+	};
+};
+
+

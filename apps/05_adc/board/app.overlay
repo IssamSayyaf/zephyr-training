@@ -1,0 +1,50 @@
+// / {
+// 	buttons {
+// 		compatible = "button-driver";
+// 		button0: button_0 {
+// 			gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+// 			label = "User Button";
+// 		};
+// 	};
+
+// 	aliases {
+// 		button0 = &button0;
+// 	};
+// };
+
+/ {
+    buttons {
+        compatible = "gpio-keys";
+        p006_in: p006_in {
+            gpios = <&gpio0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "P0.06_BTN";
+        };
+    };
+};
+/ {
+	aliases {
+		button6 = &p006_in;
+        my-adc = &adc;
+        my-adc-channel = &adc0_ch0;
+	};
+};
+
+
+
+
+&adc {
+    status = "okay";
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    /* Channel 0 on P0.04 (AIN0) */
+    adc0_ch0: channel@0 {
+        reg = <0>;
+        zephyr,gain = "ADC_GAIN_1_4";
+        zephyr,reference = "ADC_REF_VDD_1_4";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,input-positive = <NRF_SAADC_AIN2>;   /* P0.04 */
+        zephyr,resolution = <12>;
+    };
+
+};
