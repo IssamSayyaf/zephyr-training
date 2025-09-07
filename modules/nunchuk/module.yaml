@@ -1,0 +1,11 @@
+name: nunchuk-driver
+version: "1.0.0"
+description: "Nintendo Nunchuk I2C driver module for Zephyr RTOS on nRF52840"
+author: "Your Name"
+license: "Apache-2.0"
+keywords:
+  - input
+  - gamepad
+  - i2c
+  - nrf52840
+  - sensor

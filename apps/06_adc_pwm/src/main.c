@@ -9,10 +9,11 @@ static const int32_t sleep_time_ms = 100;
 // Get Devicetree configurations
 #define MY_ADC_CH DT_ALIAS(my_adc_channel)
 #define MY_ADC DT_ALIAS(my_adc)
+#define MY_PWM DT_ALIAS(pwm_led0)
 
 static const struct device *adc = DEVICE_DT_GET(MY_ADC);
 static const struct adc_channel_cfg adc_ch = ADC_CHANNEL_CFG_DT(MY_ADC_CH);
-static const struct pwm_dt_spec pwm_led = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led0));
+static const struct pwm_dt_spec pwm_led = PWM_DT_SPEC_GET(MY_PWM);
 
 #define VDD_MV 3000
 

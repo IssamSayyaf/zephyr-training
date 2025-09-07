@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: Apache-2.0
+
+# Main driver enable option
+config NUNCHUK_DRIVER
+	bool "Nintendo Nunchuk I2C driver"
+	depends on I2C && INPUT  # ← Use depends instead of select
+	help
+	  Enable Nintendo Nunchuk I2C input driver support.
+
+if NUNCHUK_DRIVER
+
+config NUNCHUK_INIT_PRIORITY
+	int "Nunchuk driver initialization priority"
+	default 90
+	range 70 99
+	help
+	  Driver initialization priority. Must be higher than I2C.
+
+config NUNCHUK_THREAD_STACK_SIZE
+	int "Stack size for nunchuk work handler"
+	default 1536
+	range 1024 4096
+	help
+	  Stack size for the work queue that handles nunchuk polling.
+	  Default 1536 bytes provides room for I2C operations and callbacks.
+
+config NUNCHUK_GESTURES
+	bool "Enable gesture detection"
+	depends on FPU
+	default y if FPU
+	help
+	  Enable accelerometer-based gesture detection.
+	  Requires FPU for floating-point calculations.
+
+config NUNCHUK_LOG_LEVEL
+	int "Nunchuk driver log level"
+	depends on LOG
+	default 3
+	range 0 4
+	help
+	  0=OFF, 1=ERROR, 2=WARNING, 3=INFO, 4=DEBUG
+
+endif # NUNCHUK_DRIVER

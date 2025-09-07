@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: Apache-2.0
+
+description: Nintendo Wii Nunchuk I2C input device with extended features
+
+compatible: "nintendo,nunchuk-extended"
+
+include: i2c-device.yaml
+
+properties:
+  poll-interval-ms:
+    type: int
+    default: 20
+    description: |
+      Polling interval in milliseconds for reading sensor data.
+      Typical range: 10-50ms. Lower values = more responsive but higher CPU usage.
+
+  deadzone:
+    type: int
+    default: 15
+    description: |
+      Joystick deadzone radius (0-127). Joystick movements within this distance
+      from center (127,127) are ignored to reduce noise and drift.
+
+  nunchuk-type:
+    type: string
+    default: "white"
+    enum:
+      - "black"
+      - "white"
+    description: |
+      Nunchuk variant type:
+      - "black": Original Nunchuk (init: 0xF0,0x55 then 0xFB,0x00)
+      - "white": Newer Nunchuk (init: 0x40,0x00 then 0x00)
+
+  enable-gestures:
+    type: boolean
+    description: |
+      Enable gesture detection using accelerometer data.
+      Detects shakes and tilts. Requires FPU support.

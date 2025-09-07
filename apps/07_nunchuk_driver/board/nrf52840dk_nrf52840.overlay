@@ -1,0 +1,40 @@
+/*
+ * nRF52840 DK board overlay for Nunchuk
+ * Uses I2C1 pins: P0.26=SDA, P0.27=SCL
+ */
+
+&pinctrl {
+	i2c1_default: i2c1_default {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 0, 26)>,
+				<NRF_PSEL(TWIM_SCL, 0, 27)>;
+				
+			bias-pull-up;
+		};
+	};
+
+	i2c1_sleep: i2c1_sleep {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 0, 26)>,
+				<NRF_PSEL(TWIM_SCL, 0, 27)>;
+			bias-pull-up;
+		};
+	};
+};
+
+&i2c1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>; /* 100kHz */
+	pinctrl-0 = <&i2c1_default>;
+	pinctrl-1 = <&i2c1_sleep>;
+	pinctrl-names = "default", "sleep";
+	
+	nunchuk: nunchuk@52 {
+		compatible = "nintendo,nunchuk-extended";
+		reg = <0x52>;
+		poll-interval-ms = <1>;
+		deadzone = <15>;
+		nunchuk-type = "white";  /* Change to "black" for original */
+		enable-gestures;
+	};
+};
