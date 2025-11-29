@@ -5,14 +5,8 @@ cmake_minimum_required(VERSION 3.20.0)
 
 # Set the target board to Raspberry Pi Pico
 set(BOARD nrf52840dk/nrf52840)
-# Specify the Device Tree overlay file that contains custom board configurations
-# set(DTC_OVERLAY_FILE "board/app.overlay")
-
-# Find and include the Zephyr package which provides build system integration
-# REQUIRED ensures CMake will error if Zephyr isn't found
-# HINTS tells CMake where to look for Zephyr using the ZEPHYR_BASE environment variable
+# Find the Zephyr package using the ZEPHYR_BASE environment variable
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-
 
 # Name the project
 project(hello_blink)
