@@ -19,10 +19,3 @@ project(ZEPHYR_APP_1)
 # Add the main application source file
 target_sources(app PRIVATE src/main.c)
 
-# Add the button driver source files
-# target_sources(app PRIVATE
-#     drivers/button/src/button_driver.c
-# )
-
-# Add the driver include directory
-# target_include_directories(app PRIVATE drivers/button/include)
