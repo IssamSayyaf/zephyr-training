@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.20.0)
 set(BOARD nrf52840dk/nrf52840)
 # Specify the Device Tree overlay file that contains custom board configurations
 # set(DTC_OVERLAY_FILE "board/app.overlay")
-set(EXTRA_CONF_FILE board/nrf_config.conf)
+# set(EXTRA_CONF_FILE board/nrf_config.conf)
 set(ZEPHYR_EXTRA_MODULES "${CMAKE_SOURCE_DIR}/../../modules/say_hello")
 # Find and include the Zephyr package which provides build system integration
 # REQUIRED ensures CMake will error if Zephyr isn't found
