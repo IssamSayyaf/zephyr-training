@@ -7,14 +7,7 @@ A comprehensive guide to building and compiling Zephyr RTOS applications and dri
 1. [Installation and Setup](#1-installation-and-setup)
 2. [Build System Overview](#2-build-system-overview)
 3. [Environment Setup](#3-environment-setup)
-4. [Basic Build Commands](#4-basic-build-commands)
-5. [Build System Architecture](#5-build-system-architecture)
-6. [Advanced Build Options](#6-advanced-build-options)
-7. [Building with Custom Modules](#7-building-with-custom-modules)
-8. [Build Configuration](#8-build-configuration)
-9. [Debugging Build Issues](#9-debugging-build-issues)
-10. [Board-Specific Builds](#10-board-specific-builds)
-11. [Best Practices](#11-best-practices)
+
 
 ---
 
