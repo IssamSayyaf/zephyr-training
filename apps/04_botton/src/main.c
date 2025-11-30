@@ -56,14 +56,6 @@ int main(void)
 				}
 			}
 		}
-		// ret = gpio_pin_toggle_dt(&led);
-		// if (ret < 0) {
-		// 	return 0;
-		// }
-
-		// led_state = !led_state;
-		// printf("LED state: %s\n", led_state ? "ON" : "OFF");
-		// k_msleep(SLEEP_TIME_MS);
 	}
 	return 0;
 }
